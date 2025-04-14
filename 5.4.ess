@@ -1,0 +1,55 @@
+start
+new a number
+set a TIME
+new year number
+set year 0
+loop q (a>31535999999)
+set a a-31536000000
+set year year+1
+end q
+new v number
+set v 0
+loop vis_day (year>3)
+set year year-4
+set v v+1
+end vis_day
+new vissday number
+set vissday 0
+loop vidayy (v>0)
+set vissday vissday+86400000
+set v v-1
+end vidayy
+new seg_not_vis number
+set seg_not_vis TIME-vissday
+new bday number
+set bday 1162700400000
+set bday bday-vissday
+new age number
+set age seg_not_vis-bday
+new age_year number
+set age_year 0
+loop s1 (age>31535999999)
+set age age-31536000000
+set age_year age_year+1
+end s1
+loop month_uts (seg_not_vis>31535999999)
+set seg_not_vis seg_not_vis-31536000000
+end month_uts
+loop month_bday (bday>31535999999)
+set bday bday-31536000000
+end month_bday
+if (bday>seg_not_vis)
+set age_year age_year+1 
+log string "В этом году вам будет " >> age_year
+else ?если дршка была
+log string "В этом году вам исполнилось " >> age_year
+close
+loop was_bday (age_year>4) 
+set age_year age_year-5
+end was_bday 
+if (age_year>0)
+log string "Юбилея в этом году нет."
+else 
+log string "В этом году у вас будет юбилей"
+close
+finish
