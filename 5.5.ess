@@ -1,0 +1,89 @@
+start
+new a number
+set a TIME 
+log string "UTC:" >> TIME
+log string "GMT+3 MSK:" >> a
+set a TIME-1123200000
+new year number
+set year 0
+loop see (a>31535999999)
+set a a-31536000000
+set year year+1
+end see
+new month number
+set month 0
+loop moo (a>2591999999)
+set a a-2592000000
+set month month+1
+end moo
+new day number
+set day 0
+loop daa (a>86399999)
+set a a-86400000
+set day day+1
+end daa
+new hour number
+set hour 0
+loop hou (a>3599999)
+set a a-3600000
+set hour hour+1
+end hou
+new min number
+set min 0
+loop mi (a>59000)
+set a a-60000
+set min min+1
+end mi
+new second number
+set second 0
+loop se (a>999)
+set a a-1000
+set second second+1
+end se
+set day day+1
+set year year+1970
+set month month+1
+log string "UTC:" >> day >> "-" >> month >> "-" >> year >> "  " >> hour >> ":" >> min >> ":" >> second
+new z number
+set z TIME-1123200000+10800000
+new yearss number
+set yearss 0
+loop sssec (a>31535999999)
+set z z-31536000000
+set yearss yearss+1
+end sssec
+new monthh number
+set monthh 0
+loop moonnn (z>2591999999)
+set z z-2592000000
+set monthh monthh+1
+end moonnn
+new daayy number
+set daayy 0
+loop ddaa (z>86399999)
+set z z-86400000
+set daayy daayy+1
+end ddaa
+new houuurr number
+set houuurr 0
+loop hooo (z>3599999)
+set z z-3600000
+set houuurr houuurr+1
+end hooo
+new p number
+set p 0
+loop mii (z>59000)
+set z z-60000
+set p p+1
+end mii
+new secunda number
+set secunda 0
+loop sseee (a>999)
+set z z-1000
+set secunda secunda+1
+end sseee
+set daayy daayy+1
+set yearss yearss+1970
+set monthh monthh+1
+log string "GMT+3 MSK:" >> daayy >> "-" >> monthh >> "-" >> yearss >> "  " >> houuurr >> ":" >> p >> ":" >> secunda
+finish
